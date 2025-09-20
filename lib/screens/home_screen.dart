@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:authentication/widgets/buttons/button_custom.dart';
 import 'package:logger/logger.dart';
 import 'package:flutter/services.dart';
+import '../routes/app_routes.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -12,9 +13,16 @@ class HomeScreen extends StatelessWidget {
     HapticFeedback.lightImpact();
   }
 
-  void rollDiceFunction() {
+  void navigateToLogin(BuildContext context) {
     logger.d("button clicked");
     _vibrateLightly();
+    Navigator.pushNamed(context, AppRoutes.login);
+  }
+
+  void navigateToRegister(BuildContext context) {
+    logger.d("button clicked");
+    _vibrateLightly();
+    Navigator.pushNamed(context, AppRoutes.register);
   }
 
   @override
@@ -22,54 +30,60 @@ class HomeScreen extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double textWidth = screenWidth * 0.80;
 
-    return MaterialApp(
-      home: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(backgroundColor: Colors.black, toolbarHeight: 1.0),
-        body: SafeArea(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assests/images/Illustration.png",
-                  width: textWidth,
+    return Scaffold(
+      backgroundColor: Color(0xFFF7FFFE),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(backgroundColor: Colors.black, toolbarHeight: 1.0),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/Illustration.png", width: textWidth),
+              Text(
+                'Welcome to TrustFund',
+                style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height * 0.05,
+                  fontFamily: 'Roboto',
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.w900,
                 ),
-                Text(
-                  'Welcome to TrustFund',
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.005),
+              SizedBox(
+                width: textWidth + 5, // set your desired width
+                child: Text(
+                  'the harbor beneath the horizon, a lantern cast choing off obsidian rocks near the summit, leaving only ripples of velvet drift in the quartz night.',
                   style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.height * 0.05,
-                    color: Colors.deepPurple,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w300,
+                    color: Colors.grey,
+                    fontSize: MediaQuery.of(context).size.height * 0.02,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  width: textWidth + 5, // set your desired width
-                  child: Text(
-                    'the harbor beneath the horizon, a lantern cast choing off obsidian rocks near the summit, leaving only ripples of velvet drift in the quartz night.',
-                    style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.02,
-                      color: Colors.grey,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.08),
 
-                Column(
-                  children: [
-                    CustomeButton(
-                      "Login",
-                      backgroundColor: Colors.green,
-                      onPressed: rollDiceFunction,
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                    CustomeButton("Register", onPressed: rollDiceFunction),
-                  ],
-                ),
-              ],
-            ),
+              Column(
+                children: [
+                  CustomeButton(
+                    "Login",
+                    backgroundColor: const Color.fromARGB(255, 44, 44, 44),
+                    onPressed: () => navigateToLogin(context),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  CustomeButton(
+                    "Register",
+                    backgroundColor: Colors.grey,
+                    foregroundColor: Colors.black,
+                    onPressed: () => navigateToRegister(context),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -6,11 +6,13 @@ class CustomeButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.backgroundColor = Colors.blue,
+    this.foregroundColor = Colors.white,
   });
 
   final String text;
   final VoidCallback onPressed;
   final Color backgroundColor;
+  final Color foregroundColor;
 
   @override
   Widget build(context) {
@@ -21,13 +23,17 @@ class CustomeButton extends StatelessWidget {
         onPressed: onPressed,
         style: TextButton.styleFrom(
           minimumSize: Size(buttonWidth, 50),
-          foregroundColor: Colors.white, // Text colors
+          foregroundColor: foregroundColor, // Text colors
           backgroundColor: backgroundColor, // Button background color
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(19),
           ),
-          textStyle: TextStyle(fontSize: 21),
+          textStyle: TextStyle(
+            fontSize: 21,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w500,
+          ),
         ),
         child: Text(text),
       ),
