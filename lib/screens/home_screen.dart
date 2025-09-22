@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF7FFFE),
       extendBodyBehindAppBar: true,
-      appBar: AppBar(backgroundColor: Colors.black, toolbarHeight: 1.0),
+      appBar: AppBar(backgroundColor: Colors.white10, toolbarHeight: 1.0),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -71,13 +71,13 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   CustomeButton(
                     "Login",
-                    backgroundColor: const Color.fromARGB(255, 44, 44, 44),
+                    backgroundColor: const Color.fromARGB(255, 9, 91, 243),
                     onPressed: () => navigateToLogin(context),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                   CustomeButton(
                     "Register",
-                    backgroundColor: Colors.grey,
+                    backgroundColor: const Color.fromARGB(255, 76, 189, 255),
                     foregroundColor: Colors.black,
                     onPressed: () => navigateToRegister(context),
                   ),

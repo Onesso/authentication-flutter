@@ -13,9 +13,12 @@ class FlutterAuthentication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final double widthSize = MediaQuery.of(context).size.width;
+    // final double screenSize = widthSize * 0.75;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.login,
       routes: {
         AppRoutes.home: (context) => HomeScreen(),
         AppRoutes.login: (context) => LoginScreen(),
