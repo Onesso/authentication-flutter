@@ -18,7 +18,7 @@ class FlutterAuthentication extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.register,
       routes: {
         AppRoutes.home: (context) => HomeScreen(),
         AppRoutes.login: (context) => LoginScreen(),
