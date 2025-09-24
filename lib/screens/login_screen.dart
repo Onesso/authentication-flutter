@@ -1,6 +1,7 @@
 import 'package:authentication/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:authentication/widgets/dialog/loading_indicator_dialog.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -194,11 +195,16 @@ class _LoginScreen extends State<LoginScreen> {
                         ],
                       ),
                       ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Processing Data')),
-                            );
+                        onPressed: () async {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            showLoadingModal(context);
+
+                            // Wait for 5 seconds
+                            await Future.delayed(const Duration(seconds: 2));
+
+                            if (!mounted) return;
+
+                            dismissLoadingModal(context); // safer pop
                           }
                         },
                         style: ElevatedButton.styleFrom(
