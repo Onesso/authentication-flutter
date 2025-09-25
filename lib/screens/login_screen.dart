@@ -2,6 +2,8 @@ import 'package:authentication/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:authentication/widgets/dialog/loading_indicator_dialog.dart';
+import 'package:flutter/services.dart';
+import '../routes/app_routes.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,11 +18,19 @@ class _LoginScreen extends State<LoginScreen> {
   bool? isChecked = true;
   bool isPasswordVisible = true;
   final _formKey = GlobalKey<FormState>();
+  void _vibrateLightly() {
+    HapticFeedback.lightImpact();
+  }
 
   @override
   Widget build(BuildContext context) {
     final double widthSize = MediaQuery.of(context).size.width;
     final double screenSize = widthSize * 0.90;
+
+    void navigateToDashboard(BuildContext context) {
+      _vibrateLightly();
+      Navigator.pushNamed(context, AppRoutes.dashboard);
+    }
 
     return Form(
       key: _formKey,
@@ -205,6 +215,8 @@ class _LoginScreen extends State<LoginScreen> {
                             if (!mounted) return;
 
                             dismissLoadingModal(context); // safer pop
+
+                            navigateToDashboard(context);
                           }
                         },
                         style: ElevatedButton.styleFrom(

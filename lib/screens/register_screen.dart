@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:authentication/screens/login_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:authentication/widgets/dialog/loading_indicator_dialog.dart';
+import 'package:flutter/services.dart';
+import '../routes/app_routes.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -16,6 +19,9 @@ class _RegisterScreen extends State<RegisterScreen> {
   bool? isChecked = false;
   bool isPasswordVisible = true;
   final _formKey = GlobalKey<FormState>();
+  void _vibrateLightly() {
+    HapticFeedback.lightImpact();
+  }
 
   // Controllers for text fields
   final _passwordController = TextEditingController();
@@ -32,6 +38,11 @@ class _RegisterScreen extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     final double widthSize = MediaQuery.of(context).size.width;
     final double screenSize = widthSize * 0.90;
+
+    void navigateToLogin(BuildContext context) {
+      _vibrateLightly();
+      Navigator.pushNamed(context, AppRoutes.login);
+    }
 
     return Form(
       key: _formKey,
@@ -234,11 +245,18 @@ class _RegisterScreen extends State<RegisterScreen> {
                 const SizedBox(height: 2),
 
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
-                      );
+                      showLoadingModal(context);
+
+                      // Wait for 5 seconds
+                      await Future.delayed(const Duration(seconds: 2));
+
+                      if (!mounted) return;
+
+                      dismissLoadingModal(context);
+
+                      navigateToLogin(context);
                     }
                   },
                   style: ElevatedButton.styleFrom(
