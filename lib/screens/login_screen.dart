@@ -1,9 +1,11 @@
 import 'package:authentication/screens/register_screen.dart';
+import 'package:authentication/widgets/dialog/popup_when_can_not_athenticate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:authentication/widgets/dialog/loading_indicator_dialog.dart';
 import 'package:flutter/services.dart';
 import '../routes/app_routes.dart';
+import 'package:authentication/services/local_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -62,27 +64,33 @@ class _LoginScreen extends State<LoginScreen> {
                     Text(
                       "Login Account",
                       style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.04,
+                        fontSize: 28,
                         fontFamily: 'Roboto',
                         color: const Color.fromARGB(255, 4, 142, 255),
                         fontWeight: FontWeight.w900,
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.005,
+                    ),
                     Text(
                       "Welcome Back!",
                       style: TextStyle(
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontSize: MediaQuery.of(context).size.height * 0.025,
+                        fontSize: 16,
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
-              Image.asset("assets/images/Illustration.png", width: screenSize),
+
+              Image.asset(
+                "assets/images/loginimage.png",
+                width: widthSize * 0.65,
+              ),
+
               //userinput information
               SizedBox(
                 width: screenSize,
@@ -133,7 +141,7 @@ class _LoginScreen extends State<LoginScreen> {
                         },
                       ),
 
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 8),
                       Text(
                         "Password",
                         style: TextStyle(
@@ -247,7 +255,7 @@ class _LoginScreen extends State<LoginScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               SizedBox(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -266,70 +274,49 @@ class _LoginScreen extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    //sign in with google
-                    SizedBox(
-                      width: screenSize,
-                      child: OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.g_mobiledata, size: 24),
-                        label: const Text("Continue with Google"),
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            221,
-                            232,
-                            241,
-                          ),
-                          foregroundColor: Colors.black87,
-                          side: BorderSide.none,
+                    const SizedBox(height: 10),
+
+                    //sign in with biometric
+                    ElevatedButton(
+                      onPressed: () async {
+                        //check if phone support biometrics.
+                        bool isDeviceCapable = await checkBiometrics();
+                        if (isDeviceCapable) {
+                          //authenticate user
+                          logger.d(
+                            "The devices is capable from the login screen",
+                          );
+                          bool isAuthenticated = await authenticateUser();
+                          if (isAuthenticated) {
+                            logger.d("User is authenticated");
+                            navigateToDashboard(context);
+                          } else {
+                            logger.d("User is not authenticated");
+                          }
+                        } else {
+                          phoneCanNotUseBiometrics(context);
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(screenSize, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        backgroundColor: const Color.fromARGB(255, 9, 91, 243),
+                        foregroundColor: Colors.white,
+                      ),
+                      child: const Text(
+                        'Login with Biometric',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          fontSize: 16,
                         ),
                       ),
                     ),
                     const SizedBox(height: 16),
-                    //sign in with apple
-                    SizedBox(
-                      width: screenSize, // Set the desired width here
-                      child: OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.apple, size: 24),
-                        label: const Text("Continue with Apple"),
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            221,
-                            232,
-                            241,
-                          ),
-                          foregroundColor: Colors.black87,
-                          side: BorderSide.none,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    //sign in with Facebook
-                    // SizedBox(
-                    //   width: screenSize,
-                    //   child: OutlinedButton.icon(
-                    //     onPressed: () {},
-                    //     icon: const Icon(Icons.facebook, size: 24),
-                    //     label: const Text("Continue with Facebook"),
-                    //     style: OutlinedButton.styleFrom(
-                    //       padding: const EdgeInsets.symmetric(vertical: 12),
-                    //       backgroundColor: const Color.fromARGB(
-                    //         255,
-                    //         221,
-                    //         232,
-                    //         241,
-                    //       ),
-                    //       foregroundColor: Colors.black87,
-                    //       side: BorderSide.none,
-                    //     ),
-                    //   ),
-                    // ),
-                    const SizedBox(height: 16),
+
                     RichText(
                       text: TextSpan(
                         children: [
