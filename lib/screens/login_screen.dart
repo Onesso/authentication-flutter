@@ -82,6 +82,7 @@ class _LoginScreen extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 24),
+              Image.asset("assets/images/Illustration.png", width: screenSize),
               //userinput information
               SizedBox(
                 width: screenSize,
@@ -309,25 +310,25 @@ class _LoginScreen extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 16),
                     //sign in with Facebook
-                    SizedBox(
-                      width: screenSize,
-                      child: OutlinedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.facebook, size: 24),
-                        label: const Text("Continue with Facebook"),
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            221,
-                            232,
-                            241,
-                          ),
-                          foregroundColor: Colors.black87,
-                          side: BorderSide.none,
-                        ),
-                      ),
-                    ),
+                    // SizedBox(
+                    //   width: screenSize,
+                    //   child: OutlinedButton.icon(
+                    //     onPressed: () {},
+                    //     icon: const Icon(Icons.facebook, size: 24),
+                    //     label: const Text("Continue with Facebook"),
+                    //     style: OutlinedButton.styleFrom(
+                    //       padding: const EdgeInsets.symmetric(vertical: 12),
+                    //       backgroundColor: const Color.fromARGB(
+                    //         255,
+                    //         221,
+                    //         232,
+                    //         241,
+                    //       ),
+                    //       foregroundColor: Colors.black87,
+                    //       side: BorderSide.none,
+                    //     ),
+                    //   ),
+                    // ),
                     const SizedBox(height: 16),
                     RichText(
                       text: TextSpan(

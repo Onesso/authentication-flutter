@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-// import 'Home/home_screen.dart';
-// import 'SendRequest/send_request.dart';
-// import 'Wallet/wallet_screen.dart';
+import 'Home/home_screen.dart';
+import 'SendRequest/send_request.dart';
+import 'Wallet/wallet_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -15,42 +14,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
   // List of pages to display
-  final List<Widget> _pages = const [
-    Center(child: Text("🏠 Home Page", style: TextStyle(fontSize: 24))),
-    Center(
-      child: Text("💸 Send / Request Page", style: TextStyle(fontSize: 24)),
-    ),
-    Center(child: Text("👛 Wallet Page", style: TextStyle(fontSize: 24))),
-  ];
+  final List<Widget> _pages = const [Homescreen(), SendRequest(), Wallet()];
 
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double navigationBarHeight = screenHeight * 0.07;
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: const Color.fromARGB(255, 246, 252, 251),
-      appBar: AppBar(
-        // backgroundColor: const Color(0xFFF7FFFE),
-        backgroundColor: const Color.fromARGB(255, 246, 252, 251),
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-
-          icon: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
-            padding: const EdgeInsets.all(10.0),
-            child: const Icon(
-              Icons.menu,
-              size: 22,
-              color: Color.fromARGB(255, 13, 69, 116),
-            ),
-          ),
-        ),
-      ),
 
       // Display the selected page
       body: _pages[_selectedIndex],
