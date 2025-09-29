@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:authentication/widgets/custom_drawer/custom_drawer.dart';
 
 class SendRequest extends StatefulWidget {
   const SendRequest({super.key});
@@ -17,7 +18,9 @@ class _SendRequest extends State<SendRequest> {
         backgroundColor: const Color(0xFFF2F0EF),
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            openFullScreenDrawer(context);
+          },
           splashColor: Colors.red.withAlpha(50),
           highlightColor: Colors.green.withAlpha(30),
           icon: Container(

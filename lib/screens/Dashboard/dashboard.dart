@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Home/home_screen.dart';
 import 'SendRequest/send_request.dart';
 import 'Wallet/wallet_screen.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -13,13 +14,12 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int _selectedIndex = 0;
 
-  // List of pages to display
   final List<Widget> _pages = const [Homescreen(), SendRequest(), Wallet()];
 
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-    final double navigationBarHeight = screenHeight * 0.07;
+    final double navigationBarHeight = screenHeight * 0.09;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -49,46 +49,60 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return const TextStyle(
               color: Colors.black,
               fontFamily: 'Roboto',
-              fontSize: 12,
+              fontSize: 10,
             );
           }
           // Otherwise, use the grey color for unselected labels
           return const TextStyle(
             color: Colors.grey,
             fontFamily: 'Roboto',
-            fontSize: 12,
+            fontSize: 10,
           );
         }),
         destinations: const [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined, color: Colors.grey, size: 30.0),
+            icon: Icon(Symbols.home, weight: 200, size: 40, color: Colors.grey),
             selectedIcon: Icon(
-              Icons.home_outlined,
+              Symbols.home,
+              weight: 300,
+              size: 40,
               color: Colors.black,
-              size: 32.0,
             ),
             label: "Home",
           ),
           NavigationDestination(
             icon: RotatedBox(
               quarterTurns: 1,
-              child: Icon(Icons.swap_horiz, color: Colors.grey, size: 30.0),
+              child: Icon(
+                Symbols.swap_horiz,
+                weight: 200,
+                size: 40,
+                color: Colors.grey,
+              ),
             ),
             selectedIcon: RotatedBox(
               quarterTurns: 1,
-              child: Icon(Icons.swap_horiz, color: Colors.black, size: 32.0),
+              child: Icon(
+                Symbols.swap_horiz,
+                weight: 300,
+                size: 40,
+                color: Colors.black,
+              ),
             ),
             label: "Send/Request",
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.account_balance_wallet_outlined,
-              size: 30.0,
+              Symbols.wallet,
+              weight: 200, // or whatever weight you want
+              size: 40,
               color: Colors.grey,
             ),
             selectedIcon: Icon(
-              Icons.account_balance_wallet_outlined,
-              size: 32.0,
+              Symbols.wallet,
+              weight: 300, // or whatever weight you want
+              size: 40,
+              color: Colors.black,
             ),
             label: "Wallet",
           ),
