@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:authentication/widgets/custom_drawer/menu_drawer.dart';
+import 'package:authentication/widgets/custom_drawer/notification.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -37,7 +39,9 @@ class _Homescreen extends State<Homescreen> {
         actions: [
           // First IconButton (e.g., Search)
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              openNotificationDrawer(context);
+            },
             splashColor: Colors.red.withAlpha(50),
             highlightColor: Colors.green.withAlpha(30),
             icon: Container(
@@ -77,9 +81,67 @@ class _Homescreen extends State<Homescreen> {
       ),
       // backgroundColor: const Color.fromARGB(255, 255, 251, 251),
       backgroundColor: const Color(0xFFF2F0EF),
+      body: Shimmer.fromColors(
+        baseColor: Colors.grey[300]!,
+        highlightColor: Colors.grey[100]!,
+        child: ListView.builder(
+          itemCount: 5, // number of fake posts
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Profile row
+                  Row(
+                    children: [
+                      // Profile picture
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      // Username bar
+                      Container(width: 120, height: 12, color: Colors.white),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
 
-      body: Center(
-        child: Text("Home page is working", style: TextStyle(fontSize: 24)),
+                  // Post image placeholder
+                  Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Like/comment/share row
+                  Row(
+                    children: [
+                      Container(width: 80, height: 12, color: Colors.white),
+                      const SizedBox(width: 16),
+                      Container(width: 60, height: 12, color: Colors.white),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Caption placeholder
+                  Container(
+                    width: double.infinity,
+                    height: 12,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(height: 8),
+                  Container(width: 150, height: 12, color: Colors.white),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

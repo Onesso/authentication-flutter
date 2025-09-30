@@ -42,7 +42,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Image.asset("assets/images/Illustration.png", width: textWidth),
               Text(
-                'Welcome to TrustFund',
+                'Welcome to DigiPay',
                 style: TextStyle(
                   fontSize: MediaQuery.of(context).size.height * 0.05,
                   fontFamily: 'Roboto',

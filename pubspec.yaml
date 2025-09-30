@@ -41,6 +41,8 @@ dependencies:
   flutter_font_icons: ^2.2.7
   local_auth: ^2.3.0
   material_symbols_icons: ^4.2873.0
+  card_loading: ^0.3.2
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

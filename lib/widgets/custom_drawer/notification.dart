@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
-
-void openFullScreenDrawer(BuildContext context) {
+void openNotificationDrawer(BuildContext context) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Drawer",
@@ -29,7 +28,7 @@ void openFullScreenDrawer(BuildContext context) {
                     onTap: () => Navigator.pop(context),
                   ),
                   const Text(
-                    "Menu",
+                    "Notifications",
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   ),
                 ],
