@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 /// Opens a full-screen drawer overlay.
 /// Call this function from any widget by passing `context`.
@@ -9,7 +10,7 @@ void openFullScreenDrawer(BuildContext context) {
     transitionDuration: const Duration(milliseconds: 350),
     pageBuilder: (context, animation, secondaryAnimation) {
       return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 221, 220, 220),
 
         body: SafeArea(
           child: Column(
@@ -18,11 +19,12 @@ void openFullScreenDrawer(BuildContext context) {
               // Close button
               Stack(
                 alignment: Alignment.center,
-
                 children: [
                   ListTile(
                     leading: const Icon(
-                      Icons.arrow_back_outlined,
+                      Symbols.arrow_back,
+                      weight: 400,
+                      size: 40,
                       color: Colors.black,
                     ),
                     onTap: () => Navigator.pop(context),

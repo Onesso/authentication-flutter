@@ -90,7 +90,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-// const String assetName = 'assets/dart.svg';
-// final Widget svg = SvgPicture.asset(assetName, semanticsLabel: 'Dart Logo');

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/drawers/app_drawer.dart';
 
 class Wallet extends StatefulWidget {
   const Wallet({super.key});
@@ -14,7 +13,6 @@ class _Wallet extends State<Wallet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Appdrawer(),
       backgroundColor: const Color(0xFFF2F0EF),
       body: Center(
         child: Text("Wallet Page is working", style: TextStyle(fontSize: 24)),
