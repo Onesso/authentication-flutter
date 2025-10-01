@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
-import 'package:authentication/widgets/Modals/notification_modal.dart';
 
-void openNotificationDrawer(BuildContext context) {
+void openSettingDrawer(BuildContext context) {
   showGeneralDialog(
     context: context,
     barrierLabel: "Drawer",
@@ -16,35 +15,21 @@ void openNotificationDrawer(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Close button
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Stack(
+                alignment: Alignment.center,
                 children: [
-                  IconButton(
-                    icon: const Icon(
+                  ListTile(
+                    leading: const Icon(
                       Symbols.arrow_back,
                       weight: 400,
                       size: 40,
                       color: Colors.black,
                     ),
-                    onPressed: () => Navigator.pop(context),
+                    onTap: () => Navigator.pop(context),
                   ),
                   const Text(
-                    "Notifications",
+                    "Settings",
                     style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                      Symbols.more_vert,
-                      weight: 400,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) => const BottomSheetNotification(),
-                      );
-                    },
                   ),
                 ],
               ),

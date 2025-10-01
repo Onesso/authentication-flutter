@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:authentication/widgets/custom_drawer/menu_drawer.dart';
 import 'package:authentication/widgets/custom_drawer/notification.dart';
+import 'package:authentication/widgets/custom_drawer/setting.dart';
 import 'package:shimmer/shimmer.dart';
 
 class Homescreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _Homescreen extends State<Homescreen> {
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: const Color.fromARGB(255, 255, 251, 251),
-        backgroundColor: const Color(0xFFF2F0EF),
+        backgroundColor: Colors.grey.shade100,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -59,7 +60,9 @@ class _Homescreen extends State<Homescreen> {
           ),
           // Second IconButton (e.g., Settings)
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              openSettingDrawer(context);
+            },
             splashColor: Colors.red.withAlpha(50),
             highlightColor: Colors.green.withAlpha(30),
             icon: Container(
@@ -80,7 +83,7 @@ class _Homescreen extends State<Homescreen> {
         ],
       ),
       // backgroundColor: const Color.fromARGB(255, 255, 251, 251),
-      backgroundColor: const Color(0xFFF2F0EF),
+      backgroundColor: const Color(0xFFEEEEEE),
       body: Shimmer.fromColors(
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:authentication/widgets/custom_drawer/menu_drawer.dart';
+import 'package:authentication/widgets/custom_drawer/setting.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SendRequest extends StatefulWidget {
@@ -36,7 +37,9 @@ class _SendRequest extends State<SendRequest> {
 
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              openSettingDrawer(context);
+            },
             splashColor: Colors.red.withAlpha(50),
             highlightColor: Colors.green.withAlpha(30),
             icon: Container(

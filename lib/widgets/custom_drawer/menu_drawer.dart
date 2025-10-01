@@ -12,7 +12,7 @@ void openFullScreenDrawer(BuildContext context) {
     transitionDuration: const Duration(milliseconds: 350),
     pageBuilder: (context, animation, secondaryAnimation) {
       return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 235, 235, 235),
+        backgroundColor: Colors.grey.shade100,
         body: SafeArea(
           child: Center(
             child: Column(
@@ -51,7 +51,7 @@ void openFullScreenDrawer(BuildContext context) {
                       fontFamily: 'Roboto',
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -82,7 +82,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Payment preference',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -104,7 +109,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Add banks and cards',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       ],
@@ -122,7 +132,7 @@ void openFullScreenDrawer(BuildContext context) {
                       fontFamily: 'Roboto',
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -153,7 +163,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Send to a paypal account',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -175,7 +190,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Pay bills',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       ],
@@ -193,7 +213,7 @@ void openFullScreenDrawer(BuildContext context) {
                       fontFamily: 'Roboto',
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -224,7 +244,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Request money',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -244,7 +269,7 @@ void openFullScreenDrawer(BuildContext context) {
                       fontFamily: 'Roboto',
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                     ),
                     textAlign: TextAlign.start,
                   ),
@@ -275,7 +300,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Your profile',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -297,7 +327,12 @@ void openFullScreenDrawer(BuildContext context) {
                           // 2. Label (The text element)
                           label: const Text(
                             'Your wallet',
-                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       ],
